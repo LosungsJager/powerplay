@@ -22,10 +22,6 @@ public class Calibragem extends LinearOpMode {
         DcMotor motorFrontRight = hardwareMap.dcMotor.get("dir_f");
         DcMotor motorBackRight = hardwareMap.dcMotor.get("dir_t");
 
-        // Reverse the right side motors
-        // Reverse left motors if you are using NeveRests
-        motorFrontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        motorBackRight.setDirection(DcMotorSimple.Direction.REVERSE);
         double lim = 0.5;
 
         double potBR = 1.0;
@@ -33,9 +29,10 @@ public class Calibragem extends LinearOpMode {
         double potBl = 1.0;
         double potFL = 1.0;
 
-        double faixaA;
-        double faixaB;
-        double faixaC;
+        double faixaA = 0;
+        double faixaB = 0;
+        double faixaC = 0;
+
 
         motorFrontLeft.setTargetPosition(5000);
         motorBackLeft.setTargetPosition(5000);
@@ -99,7 +96,7 @@ public class Calibragem extends LinearOpMode {
                     faixaC < 0.8 || faixaC > 1.2){
 
                 int media = (motorBackLeft.getCurrentPosition() + motorBackRight.getCurrentPosition() +
-                motorFrontLeft.getCurrentPosition() + motorFrontRight.getCurrentPosition()) / 2;
+                motorFrontLeft.getCurrentPosition() + motorFrontRight.getCurrentPosition()) / 4;
             //ESQUERDA TRAS
                 if (motorBackLeft.getCurrentPosition() > media){
                     potBl = potBl - 0.1;
@@ -108,21 +105,21 @@ public class Calibragem extends LinearOpMode {
                 }
             //ESQUERDA FRENTE
                 if (motorFrontLeft.getCurrentPosition() > media){
-                    potBl = potBl - 0.1;
+                    potFL = potFL - 0.1;
                 }else if (motorFrontLeft.getCurrentPosition() < media){
-                    potBl = potBl + 0.1;
+                    potFL = potFL + 0.1;
                 }
             //DIREITA TRAS
                 if (motorBackRight.getCurrentPosition() > media){
-                    potBl = potBl - 0.1;
+                    potBR = potBl - 0.1;
                 }else if (motorBackRight.getCurrentPosition() < media){
-                    potBl = potBl + 0.1;
+                    potBR = potBl + 0.1;
                 }
             //DIREITA FRENTE
                 if (motorFrontRight.getCurrentPosition() > media){
-                    potBl = potBl - 0.1;
+                    potFR = potBl - 0.1;
                 }else if (motorFrontRight.getCurrentPosition() < media){
-                    potBl = potBl + 0.1;
+                    potFR = potBl + 0.1;
                 }
  //LEITURA DOS ENCODERS
                 telemetry.clearAll();

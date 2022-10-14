@@ -35,13 +35,6 @@ public class Begonias extends LinearOpMode {
         motorBackLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorFrontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-/* ISSO DEU PROBLEMA, REVISAR
-        motorFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        motorBackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
- ISSO DEU PROBLEMA, REVISAR */
-        // set motors to run to target encoder position and stop with brakes on.
 
 
         waitForStart();
@@ -75,6 +68,11 @@ public class Begonias extends LinearOpMode {
             double backRightPower = ((y + x - rx) / denominator)*lim;
          //   telemetry.addData("trás direita:", backRightPower);
 
+            telemetry.clearAll();
+            telemetry.addData("Frente direita", motorFrontRight.getCurrentPosition());
+            telemetry.addData("Frente esquerda", motorFrontLeft.getCurrentPosition());
+            telemetry.addData("Trás direita", motorBackRight.getCurrentPosition());
+            telemetry.addData("Trás esquerda", motorBackLeft.getCurrentPosition());
             //telemetry.addData("velocidade:", lim);
             telemetry.update();
 
@@ -86,10 +84,6 @@ public class Begonias extends LinearOpMode {
             motorFrontRight.setPower(frontRightPower);
             motorBackRight.setPower(backRightPower);
 
-            telemetry.addData("encoder-fwd-left-front", motorFrontLeft.getCurrentPosition() + "  busy=" + motorFrontLeft.isBusy());
-            telemetry.addData("encoder-fwd-let-back", motorBackLeft.getCurrentPosition() + "  busy=" + motorBackLeft.isBusy());
-            telemetry.addData("encoder-fwd-right-front", motorFrontRight.getCurrentPosition() + "  busy=" + motorFrontRight.isBusy());
-            telemetry.addData("encoder-fwd-right-back", motorBackRight.getCurrentPosition() + "  busy=" + motorBackRight.isBusy());
             telemetry.update();
         }
     }

@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-@Disabled
+//@Disabled
 @TeleOp
 public class TesteMotores extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
@@ -43,11 +43,16 @@ public class TesteMotores extends LinearOpMode {
 
 
             telemetry.update();
-
+/*
             motorFrontLeft.setPower(Esquerda);
             motorBackLeft.setPower(Esquerda);
             motorFrontRight.setPower(Direita);
             motorBackRight.setPower(Direita);
+*/
+            motorFrontLeft.setPower(0.5);
+            motorBackLeft.setPower(0.5);
+            motorFrontRight.setPower(0.5);
+            motorBackRight.setPower(0.5);
         }
     }
 }
