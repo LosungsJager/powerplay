@@ -41,7 +41,11 @@ public class TesteMotores extends LinearOpMode {
             // This ensures all the powers maintain the same ratio, but only when
             // at least one is out of the range [-1, 1]
 
-
+            telemetry.addData("Frente direita", motorFrontRight.getCurrentPosition());
+            telemetry.addData("Frente esquerda", motorFrontLeft.getCurrentPosition());
+            telemetry.addData("Trás direita", motorBackRight.getCurrentPosition());
+            telemetry.addData("Trás esquerda", motorBackLeft.getCurrentPosition());
+            telemetry.update();
             telemetry.update();
 /*
             motorFrontLeft.setPower(Esquerda);

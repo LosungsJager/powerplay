@@ -69,10 +69,12 @@ public class Begonias extends LinearOpMode {
          //   telemetry.addData("trás direita:", backRightPower);
 
             telemetry.clearAll();
+            /*
             telemetry.addData("Frente direita", motorFrontRight.getCurrentPosition());
             telemetry.addData("Frente esquerda", motorFrontLeft.getCurrentPosition());
             telemetry.addData("Trás direita", motorBackRight.getCurrentPosition());
             telemetry.addData("Trás esquerda", motorBackLeft.getCurrentPosition());
+            */
             //telemetry.addData("velocidade:", lim);
             telemetry.update();
 
