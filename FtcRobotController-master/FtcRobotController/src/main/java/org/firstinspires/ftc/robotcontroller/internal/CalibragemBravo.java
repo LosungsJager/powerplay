@@ -20,12 +20,12 @@ public class CalibragemBravo extends LinearOpMode {
         DcMotor motorFrontRight = hardwareMap.dcMotor.get("dir_f");
         DcMotor motorBackRight = hardwareMap.dcMotor.get("dir_t");
 
-        double lim = 0.5;
+        float lim = 0.5f;
 
-        double potBR = 1.0;
-        double potFR = 1.0;
-        double potBl = 1.0;
-        double potFL = 1.0;
+        float potBR = 1.0f;
+        float potFR = 1.0f;
+        float potBl = 1.0f;
+        float potFL = 1.0f;
 
         double faixaA = 0.0;
         double faixaB = 0.0;
@@ -69,7 +69,7 @@ public class CalibragemBravo extends LinearOpMode {
         float PBL = motorBackLeft.getCurrentPosition();
         float PBR = motorBackRight.getCurrentPosition();
         float media = 0.0f;
-
+        float subtracao = 0.05f;
         telemetry.addData("Frente direita", PFR);
         telemetry.addData("Frente esquerda", PFL);
         telemetry.addData("Trás direita", PBR);
@@ -102,24 +102,40 @@ public class CalibragemBravo extends LinearOpMode {
 
             switch (id_motor){
                 case 1:
-                    if(PFR / PFL < 0.9) potFR =- 0.1;
-                    if(PBL / PFL < 0.9) potBl =- 0.1;
-                    if(PBR / PFL < 0.9) potBR =- 0.1;
+                    if(PFR / PFL < 1.0) potFR = potFR - subtracao;
+                    if(PBL / PFL < 1.0) potBl = potBl - subtracao;
+                    if(PBR / PFL < 1.0) potBR = potBR - subtracao;
+
+                    if(PFR / PFL > 1.0) potFR = potFR + subtracao;
+                    if(PBL / PFL > 1.0) potBl = potBl + subtracao;
+                    if(PBR / PFL > 1.0) potBR = potBR + subtracao;
                     break;
                 case 2:
-                    if(PFL / PFR < 0.9) potFL =- 0.1;
-                    if(PBL / PFR < 0.9) potBl =- 0.1;
-                    if(PBR / PFR < 0.9) potBR =- 0.1;
+                    if(PFL / PFR < 1.0) potFL = potFL - subtracao;
+                    if(PBL / PFR < 1.0) potBl = potBl - subtracao;
+                    if(PBR / PFR < 1.0) potBR = potBR - subtracao;
+
+                    if(PFL / PFR > 1.0) potFL = potFL + subtracao;
+                    if(PBL / PFR > 1.0) potBl = potBl + subtracao;
+                    if(PBR / PFR > 1.0) potBR = potBR + subtracao;
                     break;
                 case 3:
-                    if(PFL / PBL < 0.9) potFL =- 0.1;
-                    if(PFR / PBL < 0.9) potFR =- 0.1;
-                    if(PBR / PBL < 0.9) potBR =- 0.1;
+                    if(PFL / PBL < 1.0) potFL = potFL - subtracao;
+                    if(PFR / PBL < 1.0) potFR = potFR - subtracao;
+                    if(PBR / PBL < 1.0) potBR = potBR - subtracao;
+
+                    if(PFL / PBL > 1.0) potFL = potFL + subtracao;
+                    if(PFR / PBL > 1.0) potFR = potFR + subtracao;
+                    if(PBR / PBL > 1.0) potBR = potBR + subtracao;
                     break;
                 case 4:
-                    if(PFL / PBR < 0.9) potFL =- 0.1;
-                    if(PFR / PBR < 0.9) potFR =- 0.1;
-                    if(PBL / PBR < 0.9) potBl =- 0.1;
+                    if(PFL / PBR < 1.0) potFL = potFL - subtracao;
+                    if(PFR / PBR < 1.0) potFR = potFR - subtracao;
+                    if(PBL / PBR < 1.0) potBl = potBl - subtracao;
+
+                    if(PFL / PBR > 1.0) potFL = potFL + subtracao;
+                    if(PFR / PBR > 1.0) potFR = potFR + subtracao;
+                    if(PBL / PBR > 1.0) potBl = potBl + subtracao;
                     break;
             }
             //rotina movimentar os motores
@@ -145,12 +161,21 @@ public class CalibragemBravo extends LinearOpMode {
             motorFrontRight.setPower(0);
             motorBackRight.setPower(0);
             telemetry.clearAll();
+
             telemetry.addData("Frente direita", PFR);
             telemetry.addData("Frente esquerda", PFL);
             telemetry.addData("Trás direita", PBR);
             telemetry.addData("Trás esquerda", PBL);
+/*
+            telemetry.addData("Frente direita", potFR);
+            telemetry.addData("Frente esquerda", potFL);
+            telemetry.addData("Trás direita", potBR);
+            telemetry.addData("Trás esquerda", potBl);
+*/
+
             telemetry.update();
-            Thread.sleep(1000);
+
+            Thread.sleep(2000);
         }
     }
 }

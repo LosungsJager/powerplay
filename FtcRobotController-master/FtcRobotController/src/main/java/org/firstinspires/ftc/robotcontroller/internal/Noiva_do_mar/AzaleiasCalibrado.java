@@ -48,13 +48,13 @@ public class AzaleiasCalibrado extends LinearOpMode {
             // This ensures all the powers maintain the same ratio, but only when
             // at least one is out of the range [-1, 1]
             double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
-            double frontLeftPower = (((y + x + rx) / denominator)-0.1)*lim;
+            double frontLeftPower = ((y + x + rx) / denominator)*lim;
             telemetry.addData("frente esquerda:", frontLeftPower);
-            double backLeftPower = (((y - x + rx) / denominator)-0.1)*lim;
+            double backLeftPower = ((y - x + rx) / denominator)*lim;
             telemetry.addData("trás esquerda:", backLeftPower);
-            double frontRightPower = (((y - x - rx) / denominator)-0)*lim;
+            double frontRightPower = ((y - x - rx) / denominator)*lim;
             telemetry.addData("frente direita:", frontRightPower);
-            double backRightPower = (((y + x - rx) / denominator)-0)*lim;
+            double backRightPower = ((y + x - rx) / denominator)*lim;
             telemetry.addData("trás direita:", backRightPower);
 
             telemetry.addData("velocidade:", lim);
@@ -63,8 +63,8 @@ public class AzaleiasCalibrado extends LinearOpMode {
             baseGarra.setPower(gamepad1.right_trigger);
             baseGarra.setPower(-gamepad1.left_trigger);
 
-            motorFrontLeft.setPower(frontLeftPower);
-            motorBackLeft.setPower(backLeftPower);
+            motorFrontLeft.setPower(frontLeftPower * 0.78);
+            motorBackLeft.setPower(backLeftPower * 0.78 i                                           y                                             yi y i                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                iyiy yyi     i i yi7);
             motorFrontRight.setPower(frontRightPower);
             motorBackRight.setPower(backRightPower);
         }
