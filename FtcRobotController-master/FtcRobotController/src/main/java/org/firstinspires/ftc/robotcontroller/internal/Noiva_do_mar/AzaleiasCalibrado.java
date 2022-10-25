@@ -64,7 +64,7 @@ public class AzaleiasCalibrado extends LinearOpMode {
             baseGarra.setPower(-gamepad1.left_trigger);
 
             motorFrontLeft.setPower(frontLeftPower * 0.78);
-            motorBackLeft.setPower(backLeftPower * 0.78 i                                           y                                             yi y i                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                iyiy yyi     i i yi7);
+            motorBackLeft.setPower(backLeftPower * 0.78);
             motorFrontRight.setPower(frontRightPower);
             motorBackRight.setPower(backRightPower);
         }
