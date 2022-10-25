@@ -5,6 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+
 @TeleOp
 public class CalibragemBravo extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
@@ -129,14 +131,35 @@ public class CalibragemBravo extends LinearOpMode {
                     if(PBR / PBL > 1.0) potBR = potBR + subtracao;
                     break;
                 case 4:
-                    if(PFL / PBR < 1.0) potFL = potFL - subtracao;
-                    if(PFR / PBR < 1.0) potFR = potFR - subtracao;
-                    if(PBL / PBR < 1.0) potBl = potBl - subtracao;
+                    telemetry.addData("CASE 4", id_motor);
+                    telemetry.update();
+                    Thread.sleep(500);
 
+                    if(PFL / PBR < 1) {
+                        potFL = potFL - subtracao;
+                    } else {
+                        potFL = potFL + subtracao;
+                    }
+
+                    if(PFR / PBR < 1) {
+                        potFR = potFR - subtracao;
+
+                    } else {
+                        potFR = potFR + subtracao;
+                    }
+
+                    if(PBL / PBR < 1) {
+                        potBl = potBl - subtracao;
+                    } else {
+                        potBl = potBl + subtracao;
+                    }
+
+                    /*
                     if(PFL / PBR > 1.0) potFL = potFL + subtracao;
                     if(PFR / PBR > 1.0) potFR = potFR + subtracao;
                     if(PBL / PBR > 1.0) potBl = potBl + subtracao;
                     break;
+*/
             }
             //rotina movimentar os motores
             motorFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -162,10 +185,10 @@ public class CalibragemBravo extends LinearOpMode {
             motorBackRight.setPower(0);
             telemetry.clearAll();
 
-            telemetry.addData("Frente direita", PFR);
-            telemetry.addData("Frente esquerda", PFL);
-            telemetry.addData("Trás direita", PBR);
-            telemetry.addData("Trás esquerda", PBL);
+            telemetry.addData("Trás direita", PFR);
+            telemetry.addData("Trás esquerda", PFL);
+            telemetry.addData("Frente direita", PBR);
+            telemetry.addData("Frente esquerda", PBL);
 /*
             telemetry.addData("Frente direita", potFR);
             telemetry.addData("Frente esquerda", potFL);
