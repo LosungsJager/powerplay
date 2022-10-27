@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 @TeleOp
-public class Calibragem extends LinearOpMode {
+public class CalibragemAlpha extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     @Override
 

@@ -10,7 +10,12 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 public class AzaleiasCalibrado extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     @Override
-
+/*
+    public void init(){
+        telemetry.addLine("Iniciou");
+        telemetry.update();
+    }
+*/
     public void runOpMode() throws InterruptedException {
 
         // Declare our motors

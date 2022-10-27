@@ -53,10 +53,21 @@ public class TesteMotores extends LinearOpMode {
             motorFrontRight.setPower(Direita);
             motorBackRight.setPower(Direita);
 */
-            motorFrontLeft.setPower(0.5);
-            motorBackLeft.setPower(0.5);
-            motorFrontRight.setPower(0.5);
+            //motorFrontLeft.setPower(0.5);
+            //motorBackLeft.setPower(0.5);
+            //motorFrontRight.setPower(0.5);
             motorBackRight.setPower(0.5);
+
+            Thread.sleep(1000);
+
+            motorFrontLeft.setPower(0);
+            motorBackLeft.setPower(0);
+            motorFrontRight.setPower(0);
+            motorBackRight.setPower(0);
+
+            motorBackRight.setTargetPosition(5000);
+            motorBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            Thread.sleep(1000);
         }
     }
 }

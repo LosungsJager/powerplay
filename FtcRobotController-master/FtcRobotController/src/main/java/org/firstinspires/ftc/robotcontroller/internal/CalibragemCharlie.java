@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 @Disabled
 @TeleOp
-public class CalibragemBravo extends LinearOpMode {
+public class CalibragemCharlie extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
 
     @Override
@@ -81,13 +81,13 @@ public class CalibragemBravo extends LinearOpMode {
 
         Thread.sleep(2000);
 
-        float motores[]= {PFL,PFR,PBL,PBR};
+        float motores[] = {PFL, PFR, PBL, PBR};
         int id_motor = 0;
         float valor_m = 0;
-        for( int i=0; i<4; i++){ //check which motor spin the less
-            if(valor_m>motores[i])
+        for (int i = 0; i < 4; i++) { //check which motor spin the less
+            if (valor_m > motores[i])
                 valor_m = motores[i];
-            id_motor = i+1;
+            id_motor = i + 1;
         }
         telemetry.addData("menor motor", id_motor);
         telemetry.update();
@@ -101,68 +101,13 @@ public class CalibragemBravo extends LinearOpMode {
             PFL = motorFrontLeft.getCurrentPosition(); //1
             PFR = motorFrontRight.getCurrentPosition(); //2
             PBL = motorBackLeft.getCurrentPosition(); //3
-            PBR = motorBackRight.getCurrentPosition(); //4
+            PBR = motorBackRight.getCurrentPosition(); //4;
 
-            switch (id_motor){
-                case 1:
-                    if(PFR / PFL < 1.0) potFR = potFR - subtracao;
-                    if(PBL / PFL < 1.0) potBl = potBl - subtracao;
-                    if(PBR / PFL < 1.0) potBR = potBR - subtracao;
+            if (PFL > 2500) potFL = potFL - subtracao;
+            if (PFR > 2500) potFR = potFR - subtracao;
+            if (PBL > 2500) potBl = potBl - subtracao;
+            if (PBR > 2500) potBR = potBR - subtracao;
 
-                    if(PFR / PFL > 1.0) potFR = potFR + subtracao;
-                    if(PBL / PFL > 1.0) potBl = potBl + subtracao;
-                    if(PBR / PFL > 1.0) potBR = potBR + subtracao;
-                    break;
-                case 2:
-                    if(PFL / PFR < 1.0) potFL = potFL - subtracao;
-                    if(PBL / PFR < 1.0) potBl = potBl - subtracao;
-                    if(PBR / PFR < 1.0) potBR = potBR - subtracao;
-
-                    if(PFL / PFR > 1.0) potFL = potFL + subtracao;
-                    if(PBL / PFR > 1.0) potBl = potBl + subtracao;
-                    if(PBR / PFR > 1.0) potBR = potBR + subtracao;
-                    break;
-                case 3:
-                    if(PFL / PBL < 1.0) potFL = potFL - subtracao;
-                    if(PFR / PBL < 1.0) potFR = potFR - subtracao;
-                    if(PBR / PBL < 1.0) potBR = potBR - subtracao;
-
-                    if(PFL / PBL > 1.0) potFL = potFL + subtracao;
-                    if(PFR / PBL > 1.0) potFR = potFR + subtracao;
-                    if(PBR / PBL > 1.0) potBR = potBR + subtracao;
-                    break;
-                case 4:
-                    telemetry.addData("CASE 4", id_motor);
-                    telemetry.update();
-                    Thread.sleep(500);
-
-                    if(PFL / PBR < 1) {
-                        potFL = potFL - subtracao;
-                    } else {
-                        potFL = potFL + subtracao;
-                    }
-
-                    if(PFR / PBR < 1) {
-                        potFR = potFR - subtracao;
-
-                    } else {
-                        potFR = potFR + subtracao;
-                    }
-
-                    if(PBL / PBR < 1) {
-                        potBl = potBl - subtracao;
-                    } else {
-                        potBl = potBl + subtracao;
-                    }
-
-                    /*
-                    if(PFL / PBR > 1.0) potFL = potFL + subtracao;
-                    if(PFR / PBR > 1.0) potFR = potFR + subtracao;
-                    if(PBL / PBR > 1.0) potBl = potBl + subtracao;
-                    break;
-*/
-            }
-            //rotina movimentar os motores
             motorFrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             motorBackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             motorFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -172,6 +117,12 @@ public class CalibragemBravo extends LinearOpMode {
             motorBackLeft.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             motorFrontRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
             motorBackRight.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+            telemetry.addData("Trás direita", potFR); //back right
+            telemetry.addData("Trás esquerda", potFL); //back left
+            telemetry.addData("Frente direita", potBR); //front right
+            telemetry.addData("Frente esquerda", potBl); //front left
+            telemetry.update();
 
             motorFrontLeft.setPower(potFL);
             motorBackLeft.setPower(potBl);
@@ -190,12 +141,6 @@ public class CalibragemBravo extends LinearOpMode {
             telemetry.addData("Trás esquerda", PFL); //back left
             telemetry.addData("Frente direita", PBR); //front right
             telemetry.addData("Frente esquerda", PBL); //front left
-/*
-            telemetry.addData("Frente direita", potFR);
-            telemetry.addData("Frente esquerda", potFL);
-            telemetry.addData("Trás direita", potBR);
-            telemetry.addData("Trás esquerda", potBl);
-*/
 
             telemetry.update();
 
