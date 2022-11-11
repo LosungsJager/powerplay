@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.robotcontroller.internal.Noiva_do_mar;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -25,6 +26,8 @@ public class AzaleiasCalibrado extends LinearOpMode {
         DcMotor motorFrontRight = hardwareMap.dcMotor.get("dir_f");
         DcMotor motorBackRight = hardwareMap.dcMotor.get("dir_t");
         DcMotor baseGarra = hardwareMap.dcMotor.get("base_garra");
+        Servo servogarra = hardwareMap.servo.get("servogarra");
+        Servo servotrava = hardwareMap.servo.get("servotrava");
         // Reverse the right side motors
         // Reverse left motors if you are using NeveRests
         motorFrontRight.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -48,6 +51,19 @@ public class AzaleiasCalibrado extends LinearOpMode {
             if(gamepad1.dpad_down){
                 lim = lim - 0.1;
                 Thread.sleep(1000);
+            }
+//range servo é de 0 a 1
+            if(gamepad1.a){
+                //abrir servo
+                servogarra.setPosition(0.75);
+            }
+            if(gamepad1.b){
+                //fechar servo
+                servogarra.setPosition(1);
+            }
+
+            if (gamepad1.y){
+                servotrava.setPosition(0);
             }
             // Denominator is the largest motor power (absolute value) or 1
             // This ensures all the powers maintain the same ratio, but only when
