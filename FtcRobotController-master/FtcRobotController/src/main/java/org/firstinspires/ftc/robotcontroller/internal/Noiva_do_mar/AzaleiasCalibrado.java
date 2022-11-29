@@ -1,22 +1,18 @@
 package org.firstinspires.ftc.robotcontroller.internal.Noiva_do_mar;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-
+@Disabled
 @TeleOp
 public class AzaleiasCalibrado extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     @Override
-/*
-    public void init(){
-        telemetry.addLine("Iniciou");
-        telemetry.update();
-    }
-*/
+
     public void runOpMode() throws InterruptedException {
 
         // Declare our motors
