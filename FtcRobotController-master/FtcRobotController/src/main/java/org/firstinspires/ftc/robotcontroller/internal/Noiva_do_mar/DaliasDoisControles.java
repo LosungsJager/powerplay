@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @TeleOp
-public class Dalias extends LinearOpMode {
+public class DaliasDoisControles extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     @Override
     public void runOpMode() throws InterruptedException {
@@ -61,12 +61,12 @@ public class Dalias extends LinearOpMode {
                 Thread.sleep(1000);
             }
 //range servo é de 0 a 1
-            if(gamepad1.a){
+            if(gamepad2.a){
                 //abrir servo
                 servogarra.setPosition(0.75);
 
             }
-            if(gamepad1.b){
+            if(gamepad2.b){
                 //fechar servo
                 servogarra.setPosition(1);
             }
@@ -87,8 +87,8 @@ public class Dalias extends LinearOpMode {
             telemetry.addData("velocidade:", lim);
             telemetry.update();
 
-            baseGarra.setPower(gamepad1.right_trigger);
-            baseGarra.setPower(-gamepad1.left_trigger);
+            baseGarra.setPower(gamepad2.right_trigger);
+            baseGarra.setPower(-gamepad2.left_trigger);
 
             motorFrontLeft.setPower(frontLeftPower * 0.78);
             motorBackLeft.setPower(backLeftPower * 0.78);
