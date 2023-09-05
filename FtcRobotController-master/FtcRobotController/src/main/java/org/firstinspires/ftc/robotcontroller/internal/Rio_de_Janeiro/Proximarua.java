@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.robotcontroller.internal.Noiva_do_mar;
+package org.firstinspires.ftc.robotcontroller.internal.Rio_de_Janeiro;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;

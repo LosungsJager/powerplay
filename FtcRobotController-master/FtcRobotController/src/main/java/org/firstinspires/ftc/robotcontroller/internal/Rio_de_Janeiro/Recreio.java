@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.robotcontroller.internal.Noiva_do_mar;
+package org.firstinspires.ftc.robotcontroller.internal.Rio_de_Janeiro;
 
 import static org.firstinspires.ftc.robotcore.external.navigation.AngleUnit.DEGREES;
 import static org.firstinspires.ftc.robotcore.external.navigation.AxesOrder.XYZ;

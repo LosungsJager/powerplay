@@ -1,15 +1,15 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.robotcontroller.internal.testesCalibragens;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.util.ElapsedTime;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.util.ElapsedTime;
-
 @Disabled
 @TeleOp
-public class TesteMotores extends LinearOpMode {
+public class foxtrot extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     @Override
 
@@ -32,41 +32,30 @@ public class TesteMotores extends LinearOpMode {
         if (isStopRequested()) return;
 
         while (opModeIsActive()) {
-            double Esquerda = -gamepad1.left_stick_y; //
-            double Direita = gamepad1.right_stick_y; //
+            double y = -gamepad1.left_stick_y; // Remember, this is reversed!
+            double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
+            double rx = gamepad1.right_stick_x;
             double lim = 0.5;
 
             // Denominator is the largest motor power (absolute value) or 1
             // This ensures all the powers maintain the same ratio, but only when
             // at least one is out of the range [-1, 1]
+            double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
+            double frontLeftPower = ((y + x + rx) / denominator)*lim;
+            telemetry.addData("frente esquerda:", frontLeftPower);
+            double backLeftPower = ((y - x + rx) / denominator)*lim;
+            telemetry.addData("trás esquerda:", backLeftPower);
+            double frontRightPower = ((y - x - rx) / denominator)*lim;
+            telemetry.addData("frente direita:", frontRightPower);
+            double backRightPower = ((y + x - rx) / denominator)*lim;
+            telemetry.addData("trás direita:", backRightPower);
 
-            telemetry.addData("Frente direita", motorFrontRight.getCurrentPosition());
-            telemetry.addData("Frente esquerda", motorFrontLeft.getCurrentPosition());
-            telemetry.addData("Trás direita", motorBackRight.getCurrentPosition());
-            telemetry.addData("Trás esquerda", motorBackLeft.getCurrentPosition());
             telemetry.update();
-            telemetry.update();
-/*
-            motorFrontLeft.setPower(Esquerda);
-            motorBackLeft.setPower(Esquerda);
-            motorFrontRight.setPower(Direita);
-            motorBackRight.setPower(Direita);
-*/
-            //motorFrontLeft.setPower(0.5);
-            //motorBackLeft.setPower(0.5);
-            //motorFrontRight.setPower(0.5);
-            motorBackRight.setPower(0.5);
 
-            Thread.sleep(1000);
-
-            motorFrontLeft.setPower(0);
-            motorBackLeft.setPower(0);
-            motorFrontRight.setPower(0);
-            motorBackRight.setPower(0);
-
-            motorBackRight.setTargetPosition(5000);
-            motorBackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            Thread.sleep(1000);
+            motorFrontLeft.setPower(frontLeftPower);
+            motorBackLeft.setPower(backLeftPower);
+            motorFrontRight.setPower(frontRightPower);
+            motorBackRight.setPower(backRightPower);
         }
     }
 }
