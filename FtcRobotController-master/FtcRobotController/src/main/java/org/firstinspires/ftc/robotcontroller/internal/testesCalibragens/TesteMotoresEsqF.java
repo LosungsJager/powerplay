@@ -1,19 +1,16 @@
-package org.firstinspires.ftc.robotcontroller.internal.Noiva_do_mar;
-//E0 esq_t
-//C1 esq_f
-//E1 dir_f
-//C0 dir_t
+package org.firstinspires.ftc.robotcontroller.internal.testesCalibragens;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+@Disabled
 @TeleOp
-public class Estrondosas extends LinearOpMode {
+public class TesteMotoresEsqF extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
-
     @Override
     public void runOpMode() throws InterruptedException {
 
@@ -22,12 +19,8 @@ public class Estrondosas extends LinearOpMode {
         DcMotor motorFrontRight = hardwareMap.dcMotor.get("dir_f");
         DcMotor motorBackRight = hardwareMap.dcMotor.get("dir_t");
 
-
-        motorFrontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-
-
+        motorFrontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         motorBackRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        motorBackLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         double lim = 0.6;
 
         waitForStart();
@@ -53,7 +46,7 @@ public class Estrondosas extends LinearOpMode {
             // This ensures all the powers maintain the same ratio, but only when
             // at least one is out of the range [-1, 1]
 
-
+  /*
             double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
             double frontLeftPower = -((y + x + rx) / denominator)*lim;
             telemetry.addData("frente esquerda:", frontLeftPower);
@@ -73,8 +66,8 @@ public class Estrondosas extends LinearOpMode {
             motorBackLeft.setPower(backLeftPower * 0.91);
             motorFrontRight.setPower(frontRightPower);
             motorBackRight.setPower(backRightPower);
-
-
+*/
+            motorFrontLeft.setPower(1);
         }
     }
 }
