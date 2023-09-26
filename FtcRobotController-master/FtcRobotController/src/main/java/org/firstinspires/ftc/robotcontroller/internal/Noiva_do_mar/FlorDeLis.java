@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp
-public class Estrondosas extends LinearOpMode {
+public class FlorDeLis extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
 
     @Override
@@ -22,11 +22,9 @@ public class Estrondosas extends LinearOpMode {
         DcMotor motorBackLeft = hardwareMap.dcMotor.get("esq_t");
         DcMotor motorFrontRight = hardwareMap.dcMotor.get("dir_f");
         DcMotor motorBackRight = hardwareMap.dcMotor.get("dir_t");
-
+        DcMotor baseGarra = hardwareMap.dcMotor.get("base_garra");
 
         motorFrontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-
-
         motorBackRight.setDirection(DcMotorSimple.Direction.REVERSE);
 
         double lim = 0.6;
@@ -79,3 +77,4 @@ public class Estrondosas extends LinearOpMode {
         }
     }
 }
+

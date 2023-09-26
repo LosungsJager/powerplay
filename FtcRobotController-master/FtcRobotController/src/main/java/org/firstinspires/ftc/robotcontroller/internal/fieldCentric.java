@@ -10,7 +10,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
-@TeleOp(name="Meacnum Control Drive V2", group="TeleOp")
+@TeleOp(name="Field Centric Drive V2", group="TeleOp")
 public class fieldCentric extends LinearOpMode {
     private DcMotor frontLeft = null;
     private DcMotor frontRight = null;

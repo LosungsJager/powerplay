@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@TeleOp(name="Meacnum Control Drive V1", group="TeleOp")
+@TeleOp(name="Mecanum Control Drive V1", group="TeleOp")
 public class mecanumV2 extends LinearOpMode {
     private DcMotor frontLeft = null;
     private DcMotor frontRight = null;
@@ -20,8 +20,8 @@ public class mecanumV2 extends LinearOpMode {
         frontRight = hardwareMap.dcMotor.get("dir_f");
         backRight = hardwareMap.dcMotor.get("dir_t");
 
-        frontLeft.setDirection(DcMotor.Direction.REVERSE);
-        backLeft.setDirection(DcMotor.Direction.REVERSE);
+       // frontLeft.setDirection(DcMotor.Direction.REVERSE);
+       // backLeft.setDirection(DcMotor.Direction.REVERSE);
         waitForStart();
 
         while (opModeIsActive()) {

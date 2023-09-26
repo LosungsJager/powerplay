@@ -1,18 +1,19 @@
-package org.firstinspires.ftc.robotcontroller.internal.Noiva_do_mar;
+package org.firstinspires.ftc.robotcontroller.internal.testesCalibragens;
 //E0 esq_t
-//E1 dir_f
-
-//C0 dir_t
 //C1 esq_f
-//C2 base_garra
+//E1 dir_f
+//C0 dir_t
+
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+@Disabled
 @TeleOp
-public class Estrondosas extends LinearOpMode {
+public class Estrondosas_ajuste extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
 
     @Override
@@ -56,16 +57,16 @@ public class Estrondosas extends LinearOpMode {
 
 
             double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
-            double frontLeftPower = -((y + x + rx) / denominator)*lim;
+            double frontLeftPower = -((y + x + rx) / denominator)*0.6;
             telemetry.addData("frente esquerda:", frontLeftPower);
-            double backLeftPower = ((y - x + rx) / denominator)*lim;
+            double backLeftPower = ((y - x + rx) / denominator)*0.6;
             telemetry.addData("trás esquerda:", backLeftPower);
-            double frontRightPower = ((y - x - rx) / denominator)*lim*0.91;
+            double frontRightPower = ((y - x - rx) / denominator)*0.6*lim;
             telemetry.addData("frente direita:", frontRightPower);
-            double backRightPower = ((y + x - rx) / denominator)*lim;
+            double backRightPower = ((y + x - rx) / denominator)*0.6;
             telemetry.addData("trás direita:", backRightPower);
 
-            telemetry.addData("velocidade:", lim);
+            telemetry.addData("velocidade frente direta:", lim);
             telemetry.update();
 
             //motorFrontLeft.setPower(frontLeftPower * 0.78);
