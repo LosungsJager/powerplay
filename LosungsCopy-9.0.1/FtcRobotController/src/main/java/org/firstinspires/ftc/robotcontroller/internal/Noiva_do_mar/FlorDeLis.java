@@ -3,15 +3,19 @@ package org.firstinspires.ftc.robotcontroller.internal.Noiva_do_mar;
 //E0 esq_t
 //E1 dir_f
 //E3 lancador
+//Servo 0 garraA
+//Servo 1 garraB
 
 //C0 dir_t
 //C1 esq_f
 //C2 base_garra
-
+//Cdigital1 touch
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp
@@ -27,6 +31,11 @@ public class FlorDeLis extends LinearOpMode {
         DcMotor motorBackRight = hardwareMap.dcMotor.get("dir_t");
         DcMotor baseGarra = hardwareMap.dcMotor.get("base");
         DcMotor lancador_aviao = hardwareMap.dcMotor.get("lancador");
+
+        Servo garraA = hardwareMap.servo.get("garraA");
+        Servo garraB = hardwareMap.servo.get("garraB");
+
+        TouchSensor toque = hardwareMap.touchSensor.get("touch");
 
         motorFrontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         motorBackRight.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -72,9 +81,15 @@ public class FlorDeLis extends LinearOpMode {
             motorBackRight.setPower(backRightPower);
 
             telemetry.addData("velocidade:", lim);
+            telemetry.addData("toque", toque.isPressed());
             telemetry.update();
 
+            boolean tocou = false;
             // lançador de avião
+            if(toque.isPressed()){
+
+                garraA.setPosition(-0.8);
+            }
 
             lancador_aviao.setPower(gamepad1.right_trigger);
             // base da garra
