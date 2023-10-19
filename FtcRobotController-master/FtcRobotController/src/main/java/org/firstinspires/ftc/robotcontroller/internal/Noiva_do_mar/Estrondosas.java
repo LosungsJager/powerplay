@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.robotcontroller.internal.Noiva_do_mar;
 //E0 esq_t
 //E1 dir_f
+//E2 aviao
 
 //C0 dir_t
 //C1 esq_f
@@ -22,7 +23,7 @@ public class Estrondosas extends LinearOpMode {
         DcMotor motorBackLeft = hardwareMap.dcMotor.get("esq_t");
         DcMotor motorFrontRight = hardwareMap.dcMotor.get("dir_f");
         DcMotor motorBackRight = hardwareMap.dcMotor.get("dir_t");
-
+        DcMotor motAviao = hardwareMap.dcMotor.get("aviao");
 
         motorFrontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
 
@@ -64,6 +65,11 @@ public class Estrondosas extends LinearOpMode {
             telemetry.addData("frente direita:", frontRightPower);
             double backRightPower = ((y + x - rx) / denominator)*lim;
             telemetry.addData("trás direita:", backRightPower);
+
+
+            motAviao.setPower(gamepad1.right_trigger);
+            motAviao.setPower(-gamepad1.left_trigger);
+
 
             telemetry.addData("velocidade:", lim);
             telemetry.update();

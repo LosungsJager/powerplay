@@ -20,7 +20,7 @@ public class SegurarMotor extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         baseGarra.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        baseGarra.setTargetPosition(5000);
+        //baseGarra.setTargetPosition(5000);
 
         waitForStart();
         baseGarra.setPower(0.3);
