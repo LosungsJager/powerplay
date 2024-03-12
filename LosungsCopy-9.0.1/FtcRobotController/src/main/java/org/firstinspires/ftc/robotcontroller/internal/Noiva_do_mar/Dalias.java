@@ -13,7 +13,7 @@ public class Dalias extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
-        // Declare our motors   roger pc   1
+        // Declare our motors   roger pc   11
         // Make sure your ID's match your configuration
         //usar CHARLIE como configuração
         DcMotor motorFrontLeft = hardwareMap.dcMotor.get("esq_f");
