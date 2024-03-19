@@ -45,7 +45,7 @@ public class rosas extends LinearOpMode {
         garraB.setPosition(0.9);
         Thread.sleep(3000);
 
-        //ACELERAR!!
+        /*ACELERAR!!
         motorFrontLeft.setPower(0.87 * lim);// anda para frente
         motorBackLeft.setPower(-0.87 * lim);
         motorFrontRight.setPower(-1.2 * lim);
@@ -58,7 +58,7 @@ public class rosas extends LinearOpMode {
         motorBackRight.setPower(1.2 * lim);
         Thread.sleep(950);
 
-       /* motorFrontLeft.setPower(0.97 * lim);// giro de 45°
+        motorFrontLeft.setPower(0.97 * lim);// giro de 45°
         motorBackLeft.setPower(-0.97 * lim);
         motorFrontRight.setPower(1.2 * lim);
         motorBackRight.setPower(1.2 * lim);
@@ -73,5 +73,25 @@ public class rosas extends LinearOpMode {
         garraB.setPosition(0.4); //posição da mão da garra
         garraA.setPosition(0.35); //abre a mão da garra
        */ //Thread.sleep(250);
+
+        motorFrontLeft.setPower(0.97 * lim);// anda pra direita???
+        motorBackLeft.setPower(-0.97 * lim);
+        motorFrontRight.setPower(-1.2 * lim);
+        motorBackRight.setPower(1.2 * lim);
+        Thread.sleep(1000);
+
+        motorFrontLeft.setPower(-0.97 * lim);// anda pra esquerda???
+        motorBackLeft.setPower(0.97 * lim);
+        motorFrontRight.setPower(1.2 * lim);
+        motorBackRight.setPower(-1.2 * lim);
+        Thread.sleep(1000);
+
+        motorFrontLeft.setPower(0.97 * lim);// anda pra diagonal direita???
+        motorBackRight.setPower(1.2 * lim);
+        Thread.sleep(1000);
+
+        motorFrontRight.setPower(0.97 * lim);// anda pra diagonal esquerda???
+        motorBackLeft.setPower(1.2 * lim);
+        Thread.sleep(1000);
    }
 }
