@@ -3,9 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
 <<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/.idea/powerplay.iml" filepath="$PROJECT_DIR$/.idea/powerplay.iml" />
+=======
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/LosungsjagerCodes.iml" filepath="$PROJECT_DIR$/.idea/LosungsjagerCodes.iml" />
 =======
       <module fileurl="file://$PROJECT_DIR$/.idea/powerplay.iml" filepath="$PROJECT_DIR$/.idea/powerplay.iml" />
+>>>>>>> origin/main
 >>>>>>> origin/main
     </modules>
   </component>
