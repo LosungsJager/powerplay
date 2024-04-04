@@ -27,25 +27,27 @@ public class hortensias extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-
+        //declaração de controles dos motores#######################
         DcMotor motorFrontLeft = hardwareMap.dcMotor.get("esq_f");
         DcMotor motorBackLeft = hardwareMap.dcMotor.get("esq_t");
         DcMotor motorFrontRight = hardwareMap.dcMotor.get("dir_f");
         DcMotor motorBackRight = hardwareMap.dcMotor.get("dir_t");
-        DcMotor baseGarra = hardwareMap.dcMotor.get("base");
-        DcMotor trena = hardwareMap.dcMotor.get("trena");
-        DcMotor lancador_aviao = hardwareMap.dcMotor.get("lancador");
+        //##########################################################
+        //DcMotor baseGarra = hardwareMap.dcMotor.get("base");
+        //DcMotor trena = hardwareMap.dcMotor.get("trena");
+        //DcMotor lancador_aviao = hardwareMap.dcMotor.get("lancador");
 
-        Servo garraA = hardwareMap.servo.get("garraA");
-        Servo garraB = hardwareMap.servo.get("garraB");
+        //Servo garraA = hardwareMap.servo.get("garraA");
+        //Servo garraB = hardwareMap.servo.get("garraB");
 
-        TouchSensor toque = hardwareMap.touchSensor.get("touch");
+        //TouchSensor toque = hardwareMap.touchSensor.get("touch");
 
+        //motores######################################################
         motorFrontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
         motorBackRight.setDirection(DcMotorSimple.Direction.REVERSE);
-
-        lancador_aviao.setDirection(DcMotorSimple.Direction.REVERSE);
-        baseGarra.setDirection(DcMotorSimple.Direction.REVERSE);
+        //##############################################################
+        //lancador_aviao.setDirection(DcMotorSimple.Direction.REVERSE);
+        //baseGarra.setDirection(DcMotorSimple.Direction.REVERSE);
 
         double lim = 0.6;
         double servoposicao = 0.2;
@@ -80,22 +82,17 @@ public class hortensias extends LinearOpMode {
             telemetry.addData("frente direita:", frontRightPower);
             double backRightPower = ((y + x - rx) / denominator) * lim;
             telemetry.addData("trás direita:", backRightPower);
-
-            motorFrontLeft.setPower(frontLeftPower * 1.26);
-            motorBackLeft.setPower(backLeftPower * 1.26);
-            motorFrontRight.setPower(frontRightPower * 1.50);
-            motorBackRight.setPower(backRightPower * 1.50);
-            
+            //movimenta robo#################################################
+            motorFrontLeft.setPower(frontLeftPower);
+            motorBackLeft.setPower(backLeftPower);
+            motorFrontRight.setPower(frontRightPower);
+            motorBackRight.setPower(backRightPower);
+            //##############################################################
             telemetry.addData("velocidade:", lim);
             telemetry.addData("toque", toque.isPressed());
             telemetry.update();
 
             lancador_aviao.setPower(gamepad1.right_trigger);
-
-            motorFrontLeft.setPower(frontLeftPower * 1.26);
-            motorBackLeft.setPower(backLeftPower * 1.26);
-            motorFrontRight.setPower(frontRightPower * 1.50);
-            motorBackRight.setPower(backRightPower * 1.50);
 
             if (gamepad2.right_trigger == 0) {
                 baseGarra.setPower(0.5 * gamepad2.left_trigger);
